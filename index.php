@@ -1,52 +1,85 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-  <head>
-    <title>Blog</title>
-
-    <meta charset="UTF-8">
-
-  </head>
-
-    <center>
       <?php
         session_start();
+   include_once("settings/settings.inc.php");
+        if (isset($_SESSION ['tipo'])) {
+    $tipo = $_SESSION ['tipo'];
+    $nombre = $_SESSION["nombre"];
+    $log = $_SESSION['idusr'];
+  }
+  else
+  {
+    $tipo = 0;
+    $nombre = "";
+    $log = 0;
+  }
+
         if (isset($_SESSION["nombre"])) {
 
-
-          echo "<h1>¡Bienvenido a mi Blog! " .$_SESSION["nombre"]."</h1>";
+          echo "<h1>Bienvenido a sus dominios Mirey " .$_SESSION["nombre"]."</h1>";
           echo"<P ALIGN=right>";
-        
+           echo" <a href='usredit.php'> Editar usuarios- </a>";
           echo"<a href='cerrar.php'> Cerrar Sesion </a>"; 
 
         }
         else
         {
-          echo "<h1>¡Bienvenido a mi Blog!</h1>";
+
+          echo "<h1>Bienvenido a sus dominios Mirey </h1>";
 
           echo"<P ALIGN=right>";
         
-           echo"<a href='login.php'> LOGEARSE </a><br>";
+           echo"<a href='login.php'> Logueate Mirey </a><br>";
 
-
-          echo"<a href='usuarios.php'>REGISTRARSE</a>";
+          echo"<a href='registrar.php'> Registrate Mirrey </a>";
           
-                 
-              
+      echo "</center>";        }
 
 
-        }
       ?>
-      </center>
      
-  
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <title>BLOG</title>
+    <meta charset="UTF-8">
+  </head>
 
 <?php
-
-include_once("settings/settings.inc.php"); 
+    
+ 
 
 $conexion = @mysql_connect(SQL_HOST, SQL_USER, SQL_PWD) or die(mysql_error());
 $db = @mysql_select_db(SQL_DB, $conexion) or die(mysql_error());
+ 
+
+if (isset($_GET['idborra'])) {
+  if ($tipo == 1) {
+  $idborra = $_GET['idborra'];
+
+  $sql = "DELETE FROM temas WHERE id=".$idborra;
+  $rs_temas = mysql_query($sql, $conexion) or die(mysql_error());
+}
+}
+ if (isset($_GET['ideliminarcom'])) {
+    if ($tipo == 1) {
+      $ideliminarcom = $_GET['ideliminarcom'];
+
+      $conexion = @mysql_connect(SQL_HOST, SQL_USER, SQL_PWD) or die(mysql_error());
+      $db = @mysql_select_db(SQL_DB, $conexion) or die(mysql_error());
+      $sql      = "DELETE FROM comentarios WHERE id =".$ideliminarcom;
+      $comentariodel  = @mysql_query($sql, $conexion); 
+
+   }
+   }
+
 $sql      = "select temas.*, usuarios.nombre from temas, usuarios where temas.id_usuario = usuarios.id";
 $temas    = @mysql_query($sql, $conexion);
 
@@ -54,13 +87,20 @@ echo"<center>";
 echo "<table width='80%'>";
 while ($tema = @mysql_fetch_array($temas))
 {
-
     echo "<tr>";
       echo"<td colspan = '3'><h2>".$tema['titulo']."</h2></td>";
-      echo"<td><button>Comentar</button><button>Editar</button><button>Borrar</button></td>";      
-      
-      
-    echo "</tr>";
+          echo "<td colspan = '3'>";
+             if ($tipo=='1')
+         
+          echo" <a href='tema.php'> Publicar - </a>";
+          if ($tipo>'0')
+        echo" <a href='ccomentar.php?idtema=".$tema['id']."&idusr=".$log."'> Comentar- </a>";
+               if ($tipo=='1' or $tipo == '2' )
+          echo" <a href='editar.php'> Editar - </a>";
+          if ($tipo=='1')
+          echo" <a href='index.php?idborra=".$tema['id']."'> Eliminar </a>";
+     
+     echo "</tr>";
              
     echo "<tr>";
       echo "<td colspan = '5'>".$tema['fecha_pub']. " - " .$tema['nombre']."</td>";
@@ -68,34 +108,41 @@ while ($tema = @mysql_fetch_array($temas))
     echo "</tr>";
 
     echo "<tr>";
-      echo "<td> >>> </td>";
+      echo "<td></td>";
       echo "<td colspan= '4'>".$tema['contenido']."</td>";
     echo "</tr>";
 
     echo"<tr>";
-      echo"<td colspan = '5'><button>Like</button></td>";
+      echo"<td colspan = '5'>";
+        if ($tipo>'0')
+      echo" <a href> Papawh! </a>";
+
     echo"</tr>";
 
-    $sql1        = "select comentarios.*, usuarios.nombre from comentarios, temas, usuarios " . 
-        "where comentarios.id_usuario = usuarios.id and comentarios.id_tema = temas.id and comentarios.id_tema =" . $tema['id'];
+    $sql1= "select comentarios.*, usuarios.nombre from comentarios, temas, usuarios " . 
+        "where comentarios.id_usuarios = usuarios.id and comentarios.id_temas = temas.id and comentarios.id_temas =" . $tema['id'];
     $comentarios = mysql_query($sql1, $conexion);
     echo "<table width='80%'>";
     
     while ($comentario=@mysql_fetch_array($comentarios))
     {
         echo"<tr>";
-          echo"<td colspan = '5'>" . $comentario['nombre'] . " - " . $comentario['fecha_pub']."</td>";
-         echo"</tr>";
 
-        echo"<tr>";  
-          echo"<td><button>Editar</button></td>";
-          echo"<td><button>Borrar</button></td>";
+          echo"<td colspan = '5'>" . $comentario['nombre'] . " - " . $comentario['fecha_pub']."</td>";
+          echo "<td colspan = '3'>";
+        
+         
+              if ($tipo=='1' or $tipo == '2' ) 
+          echo" <a href='ceditar.php'> Editar </a>";
+          if ($tipo=='1' or $tipo == '2' )
+         echo" <a href='index.php?ideliminarcom=".$comentario['id']."'> Eliminar</a>";
         echo"</tr>";
 
         echo"<tr>";
-          echo"<td colspan = '5'>" . $comentario['comentario'] . "</td>";
+          echo"<td colspan = '5'>" . $comentario['comentarios'] . "</td>";
         echo"</tr>";
     }
+
 }
 echo"</center>";
 echo "</table>";
@@ -103,4 +150,4 @@ echo "</table>";
 @mysql_close($conexion);
 
 ?>
-</html> 
+</html>
