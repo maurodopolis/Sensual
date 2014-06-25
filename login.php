@@ -7,16 +7,16 @@ Echo "<center>";
 
       switch ($error) {
         case '1':
-          $mensaje= "Este Mirey no existe";
+          $mensaje= "<div class='alert alert-danger'>Este Mirey no existe</div>";
           break;
         case '2':
-          $mensaje= "Codigo incorrecto Mirey";
+          $mensaje= "<div class='alert alert-danger'>Codigo incorrecto Mirey</div>";
           break;  
         case '3':
-          $mensaje= "Reinicie para socializar con las demas lobukis, Mirey";
+          $mensaje= "<div class='alert alert-info'>Reinicie para socializar con las demas lobukis, Mirey</div>";
           break;  
         case '4':
-          $mensaje= "Se ha registrado Mirey, gozalo!";
+          $mensaje= "<div class='alert alert-success'>Se ha registrado Mirey, gozalo!</div>";
           break;  
           
       }
@@ -29,6 +29,7 @@ Echo "<center>";
 <doctype html>
 <html>
   <head>
+    <meta charset="UTF-8"
     <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -40,21 +41,41 @@ Echo "<center>";
 <title>MireyBook-Iniciar Sesion.</title>
   </head>
 <body>
-  <center>
- <table border="1"> 
+<div class="container">
  
-  <form action="validarlogin.php" method="post" name="login"><br>
-   
-    <tr><td><h2><center>Inicia tu sesion Mirey</center><h2></td></tr>     
-    <tr><td><?php echo $mensaje; ?></td><tr> 
-     <tr><td><label><center>Usuario: <input name="txtusuario" type="text"  id="txtusuario" value="" ></center></td></tr>
-     <tr><td><label><center>Password: <input name="txtpassword" type="password" id="password"  value=""></center></td></tr>
-     <tr><td><center><input type="submit" value="Entrar"> </td></tr>
+ 
+
+  <div class="container">
+ <div class="jumbotron">
+    
+  <form class="form-horizontal" role="form" action="validarlogin.php" method="post" name="login">
+   <div class="form-group">
+    <div><h2><center>Inicia tu sesion Mirey</center><h2></div>   
+    
+    <div><?php echo $mensaje; ?></div>
+    
+      
+          <div class="form-group">
+          <label for="txtusuario" class="col-sm-4 control-label">Usuario</label>
+          <div class="col-sm-8">
+          <input name="txtusuario" class="form-control" type="text" placeholder="Usuario" id="txtusuario" value="" >
+          </div>
+          </div> 
+
+      
+         <div class="form-group">
+         <label for="txtpassword" class="col-sm-4 control-label">Contraseña</label>
+          <div class="col-sm-8">
+         <input name="txtpassword" placeholder="Contraseña" class="form-control" type="password" id="password"  value="">
+         </div>
+        </div>
+         <button type="submit" class="btn btn-primary">Entrar</button>
+    
    
   </form>
- 
- </table>
- </center>
+ </div>
+
+
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
