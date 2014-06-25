@@ -14,25 +14,15 @@
   }
 
         if (isset($_SESSION["nombre"])) {
-
-          echo "<h1>Bienvenido a sus dominios Mirey " .$_SESSION["nombre"]."</h1>";
-          echo"<P ALIGN=right>";
-           echo" <a href='usredit.php'> Editar usuarios- </a>";
-          echo"<a href='cerrar.php'> Cerrar Sesion </a>"; 
-
+            
+         
+          $nombre = $_SESSION["nombre"]; 
+             
         }
         else
         {
 
-          echo "<h1>Bienvenido a sus dominios Mirey </h1>";
-
-          echo"<P ALIGN=right>";
-        
-           echo"<a href='login.php'> Logueate Mirey </a><br>";
-
-          echo"<a href='registrar.php'> Registrate Mirrey </a>";
-          
-      echo "</center>";        }
+          $nombre = "";        }
 
 
       ?>
@@ -51,8 +41,38 @@
     <title>BLOG</title>
     <meta charset="UTF-8">
   </head>
+  <body>
+    <div class="container">
+  <?php
+        if (isset($_SESSION["nombre"])) {
+            
+             echo"<div  class='row'>";
+             echo "<div  class='col-md-8'>";
+          echo "<h1>Bienvenido a sus dominios Mirey " .$_SESSION["nombre"]."</h1>";
+          echo "</div>";
+          echo"<P ALIGN=right>";
+           echo" <a href='usredit.php'> Editar usuarios- </a>";
+          echo"<a href='cerrar.php'> Cerrar Sesion </a>"; 
+             
+        }
+        else
+        {
+          echo "<div  class= 'row' >";
+           echo"<div  class= 'col-md-6' >";  
+          echo "<h1><p class='text-primary'>Bienvenido a sus dominios Mirey</p> </h1>";
+           echo "</div>";
+           echo"<div  class= 'col-md-4' >";  
+         echo"<img src='rolex.png' alt='...' class='img-rounded'>";
+          echo "</div>"; 
+           echo"<div  class= 'col-md-2' >"; 
+           echo"<a href='login.php'> Logueate Mirey </a><br>";
 
-<?php
+          echo"<a href='registrar.php'> Registrate Mirrey </a>";
+          echo"</div>";
+          echo"</div>";
+      echo "</center>";        }
+
+
     
  
 
@@ -150,4 +170,10 @@ echo "</table>";
 @mysql_close($conexion);
 
 ?>
+</div>  <!-- container -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
 </html>
