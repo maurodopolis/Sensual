@@ -20,19 +20,58 @@
       header("location:login.php?error=4");
     }
     else 
-      $mensaje ="Este Mirey esta registrado";
+      $mensaje ="<div class='alert alert-success'> <center> Este Mirey esta registrado  </center> </div>";
   }
 ?>
 <!DOCTYPE html>
-     <form action="registrar.php" method="post" name="login"><br>
-    <center>
-  <table border="2">
-        <tr><td><h2><?php echo $mensaje; ?><h2></td></tr>     
-        <tr><td><h2><center>Registrate Mirey</center><h2></td></tr>    
-        <tr><td><label>Nombre: <input name="txtnombre" type="text"  id="txtnombre" value="" ></td></tr>
-        <tr><td><label>Usuario: <input name="txtusuario" type="text"  id="txtusuario" value="" ></td></tr>
-        <tr><td><label>Password: <input name="txtpassword" type="password" id="txtpassword"  value=""></td></tr>
-        <tr><td><center><input type="submit" value="Crear"></center></td></tr>   
-    </center>
-  </table>
+<html>
+<head>
+  <meta charset="UTF-8"
+  <!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+        <div class="container">
+      
+ <div class="jumbotron"> 
+     <form class="form-horizontal" role="form" action="registrar.php" method="post" name="login"><br>
+       
+        <h2><?php echo $mensaje; ?><h2>
+            
+        <h2><center>Registrate Mirey <span class="glyphicon glyphicon-credit-card"></span> </center></h2>
+        <div class="form-group">
+          <label for="txtnombre" class="col-sm-4 control-label">Nombre</label>
+          <div class="col-sm-8">  
+        <input class="form-control"placeholder="Nombre" name="txtnombre" type="text"  id="txtnombre" value="" >
+      </div>
+    </div>
+          <div class="form-group">
+          <label for="txtusuario" class="col-sm-4 control-label">Usuario</label>
+            <div class="col-sm-8">  
+         <input class="form-control"placeholder="Usuario" name="txtusuario" type="text"  id="txtusuario" value="" >
+        </div>
+      </div>
+
+                   <div class="form-group">
+          <label for="txtusuario" class="col-sm-4 control-label">Contraseña</label>
+            <div class="col-sm-8"> 
+        <input class="form-control"placeholder="Contraseña" name="txtpassword" type="password" id="txtpassword"  value="">
+     </div>
+      </div>
+         <center> <button type="submit" class="btn btn-primary">Crear</button>  </center>
+       
+   
+
     </form>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+    </body>
+    <html>
