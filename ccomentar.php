@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['idtema'])) {
-	$idtema= $_GET['idtema'];
+	  $idtema= $_GET['idtema'];
     $idusr= $_GET['idusr'];
 }
 
@@ -36,24 +36,28 @@ header("location:index.php");
 <title>Comentario</title>
 	</head>
 <body>
-  <center>
- <table border="1"> 
- 
-	<form action="ccomentar.php" method="POST" name="comentar"><br>
-   
-		<tr><td><h2>Comentar<h2></td></tr> 		 
-		 <tr><td>
+  <div class="container">
+
+ <div class="alert alert-info">
+	<form class="form-horizontal" role="form" action="ccomentar.php" method="POST" name="comentar">
+         <center>
+		<h2>Comentar  <span class="glyphicon glyphicon-comment"></span> </h2>	 
+		 </center>
 		 	<input type="hidden" name="idtema" value="<?php echo "$idtema"; ?>">
 		 	<input type="hidden" name="idusr" value="<?php echo "$idusr"; ?>">
-		 	<tr><td><label>Comentar:<input name="txtcomentario" type="text"  id="txtcomentario" value="" ></td></tr>
-		 </td></tr>
-		 <tr><td><center><input type="submit" value="Comentar"></center></td></tr>
-		 
+		 	<div class="form-group">
+          <label for="txtusuario" class="col-sm-1 control-label"></label>
+          <div class="col-sm-11">
+         <textarea name="txtcomentario" type="text"  id="txtcomentario" value="" class="form-control" rows="3"></textarea>
+           </div>
+       </div>
+
+		<center><button type="submit" class="btn btn-primary">Comentar</button></center>
+    	 
 	 
   </form>
+ </div>
  
- </table>
- </center>
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
