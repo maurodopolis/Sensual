@@ -20,7 +20,7 @@
       header("location:login.php?error=4");
     }
     else 
-      $mensaje ="Este Mirey esta registrado";
+      $mensaje ="<div class='alert alert-success'> <center> Este Mirey esta registrado  </center> </div>";
   }
 ?>
 <!DOCTYPE html>
@@ -38,11 +38,12 @@
 </head>
 <body>
         <div class="container">
-
- <div class="jumbotron "@brand-primary: #428bca;>
+      
+ <div class="jumbotron"> 
      <form class="form-horizontal" role="form" action="registrar.php" method="post" name="login"><br>
-        
-        <h2><?php echo $mensaje; ?><h2>     
+       
+        <h2><?php echo $mensaje; ?><h2>
+            
         <h2><center>Registrate Mirey <span class="glyphicon glyphicon-credit-card"></span> </center></h2>
         <div class="form-group">
           <label for="txtnombre" class="col-sm-4 control-label">Nombre</label>

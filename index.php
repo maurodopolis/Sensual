@@ -1,4 +1,4 @@
-      <?php
+   <?php
         session_start();
    include_once("settings/settings.inc.php");
         if (isset($_SESSION ['tipo'])) {
@@ -41,7 +41,7 @@
     <title>BLOG</title>
     <meta charset="UTF-8">
   </head>
-  <body>
+  <body style="background: url(legofondo.jpg) no-repeat center center fixed;">
     <div class="container">
   <?php
         if (isset($_SESSION["nombre"])) {
@@ -58,16 +58,16 @@
         else
         {
           echo "<div  class= 'row' >";
-           echo"<div  class= 'col-md-6' >";  
-          echo "<h1><p class='text-primary'>Bienvenido a sus dominios Mirey</p> </h1>";
+           echo"<div  class= 'col-md-3' >";  
+          echo "<img src='rolex.png' alt='...' class='img-rounded'>";
            echo "</div>";
-           echo"<div  class= 'col-md-4' >";  
-         echo"<img src='rolex.png' alt='...' class='img-rounded'>";
+           echo"<div  class= 'col-md-7' >";  
+         echo "<h1><p class='text-primary'>Bienvenido a sus dominios Mirey</p> </h1>";
           echo "</div>"; 
-           echo"<div  class= 'col-md-2' >"; 
-           echo"<a href='login.php'> Logueate Mirey </a><br>";
+           echo"<div  class= 'col-md-1' >"; 
+           echo"<a href='login.php'> Logueate  </a><br>";
 
-          echo"<a href='registrar.php'> Registrate Mirrey </a>";
+          echo"<a href='registrar.php'> Registrate </a>";
           echo"</div>";
           echo"</div>";
       echo "</center>";        }
@@ -81,7 +81,7 @@ $db = @mysql_select_db(SQL_DB, $conexion) or die(mysql_error());
  
 
 if (isset($_GET['idborra'])) {
-  if ($tipo == 1) {
+  if ($tipo == 0) {
   $idborra = $_GET['idborra'];
 
   $sql = "DELETE FROM temas WHERE id=".$idborra;
@@ -89,7 +89,7 @@ if (isset($_GET['idborra'])) {
 }
 }
  if (isset($_GET['ideliminarcom'])) {
-    if ($tipo == 1) {
+    if ($tipo == 0) {
       $ideliminarcom = $_GET['ideliminarcom'];
 
       $conexion = @mysql_connect(SQL_HOST, SQL_USER, SQL_PWD) or die(mysql_error());
@@ -110,14 +110,14 @@ while ($tema = @mysql_fetch_array($temas))
     echo "<tr>";
       echo"<td colspan = '3'><h2>".$tema['titulo']."</h2></td>";
           echo "<td colspan = '3'>";
-             if ($tipo=='1')
+             if ($tipo=='0')
          
           echo" <a href='tema.php'> Publicar - </a>";
           if ($tipo>'0')
         echo" <a href='ccomentar.php?idtema=".$tema['id']."&idusr=".$log."'> Comentar- </a>";
-               if ($tipo=='1' or $tipo == '2' )
+               if ($tipo=='0' or $tipo == '0' )
           echo" <a href='editar.php'> Editar - </a>";
-          if ($tipo=='1')
+          if ($tipo=='0')
           echo" <a href='index.php?idborra=".$tema['id']."'> Eliminar </a>";
      
      echo "</tr>";
@@ -152,14 +152,14 @@ while ($tema = @mysql_fetch_array($temas))
           echo "<td colspan = '3'>";
         
          
-              if ($tipo=='1' or $tipo == '2' ) 
+              if ($tipo=='0' or $tipo == '0' ) 
           echo" <a href='ceditar.php'> Editar </a>";
-          if ($tipo=='1' or $tipo == '2' )
+          if ($tipo=='0' or $tipo == '0' )
          echo" <a href='index.php?ideliminarcom=".$comentario['id']."'> Eliminar</a>";
         echo"</tr>";
 
         echo"<tr>";
-          echo"<td colspan = '5'>" . $comentario['comentarios'] . "</td>";
+          echo"<td colspan = '0'>" . $comentario['comentarios'] . "</td>";
         echo"</tr>";
     }
 
