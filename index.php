@@ -161,7 +161,7 @@ while ($tema = @mysql_fetch_array($temas))
           if ($tipo>'0')
         echo" <a href='ccomentar.php?idtema=".$tema['id']."&idusr=".$log."'> Comentar </a>";
                if ($tipo=='0' or $tipo == '0' )
-          echo" <a href='editar.php'> Editar - </a>";
+          echo" <a href='editar.php'> Editar </a>";
           if ($tipo=='0')
           echo" <a href='index.php?idborra=".$tema['id']."'> Eliminar </a>";
      
@@ -232,3 +232,4 @@ echo"</div>";
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+<!-- el fin -->
