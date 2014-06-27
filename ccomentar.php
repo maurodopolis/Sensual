@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['idtema'])) {
-	$idtema= $_GET['idtema'];
+	  $idtema= $_GET['idtema'];
     $idusr= $_GET['idusr'];
 }
 
