@@ -76,8 +76,10 @@
 
            echo"<div  class='row'>";
              echo "<div  class='col-md-12'>";
+             echo"<div class='alert alert-warning' role='alert'>"; 
           echo "<h1>Bienvenido a sus dominios Mirey " .$_SESSION["nombre"]."</h1>";
           echo "</div>";
+           echo "</div>";
            }
 
         else
@@ -109,8 +111,10 @@
        echo"</div>";
           echo "</nav>";
           echo"</p>";
-          echo"<div  class= 'col-md-12' >";  
+          echo"<div  class= 'col-md-12' >"; 
+          echo"<div class='alert alert-warning' role='alert'>"; 
          echo "<h1><p class='text-primary'>Bienvenido a sus dominios Mirey</p> </h1>";
+          echo "</div>";
           echo "</div>"; 
       echo "</center>";        
     }
@@ -147,43 +151,66 @@ $sql      = "select temas.*, usuarios.nombre from temas, usuarios where temas.id
 $temas    = @mysql_query($sql, $conexion);
 
 echo"<center>";
-echo "<div class='jumbotron'>";
+
   echo "<div class='container'>";
-echo "<table width='80%'>";
+
 while ($tema = @mysql_fetch_array($temas))
-{
-    echo "<tr>";
-      echo"<td colspan = '3'><h2>".$tema['titulo']."</h2></td>";
-          echo "<td colspan = '3'>";
+{ 
+    echo"<div>";
+     echo"<div  class = 'row'>"; 
+ echo"<div  class = 'col-md-12' >";
+    echo"<div class='panel panel-success'>";
+      echo"<h2>".$tema['titulo']."</h2>";
+     
+echo"<ul class='nav nav-tabs' role='tablist'>";
+  echo"<li class='active'><a href='#'><img src='rolex.png' alt='...' class='img-rounded'></a></li>";
+  
+              echo"<li><a href='#'>";
              if ($tipo=='0')
-         
-          echo" <a href='tema.php'> Publicar - </a>";
+         echo" <a href='tema.php'> Publicar  </a>";
+          echo"</a></li>";
+           echo"<li><a href='#'>";
           if ($tipo>'0')
+             
+         
         echo" <a href='ccomentar.php?idtema=".$tema['id']."&idusr=".$log."'> Comentar </a>";
+      echo"</a></li>";
+
+         echo"<li><a href='#'>";
                if ($tipo=='0' or $tipo == '0' )
           echo" <a href='editar.php'> Editar </a>";
+        echo"</a></li>";
+        echo"<li><a href='#'>";
+
           if ($tipo=='0')
           echo" <a href='index.php?idborra=".$tema['id']."'> Eliminar </a>";
+     echo"</a></li>";
+echo"</ul>";
      
-     echo "</tr>";
              
-    echo "<tr>";
-      echo "<td colspan = '5'>".$tema['fecha_pub']. " - " .$tema['nombre']."</td>";
+   echo"<div>";
+     echo"<div  class = 'row'>"; 
+ echo"<div  class = 'col-md-12' >";
+    echo"<div class='alert alert-info'>";
+      echo "".$tema['fecha_pub']. " - " .$tema['nombre']."";
 
-    echo "</tr>";
+    
 
-    echo "<tr>";
-      echo "<td></td>";
-      echo "<td colspan= '4'>".$tema['contenido']."</td>";
-    echo "</tr>";
-
-    echo"<tr>";
-      echo"<td colspan = '5'>";
+    
+      
+      echo "".$tema['contenido']."";
+    
+   
+      
         if ($tipo>'0')
       echo" <a href> Papawh! </a>";
+     echo"</div>"; 
+    echo"</div>";   
+     echo"</div>";
+     echo"</div>";   
+     echo"</div>"; 
 
-    echo"</tr>";
-
+    
     $sql1= "select comentarios.*, usuarios.nombre from comentarios, temas, usuarios " . 
         "where comentarios.id_usuarios = usuarios.id and comentarios.id_temas = temas.id and comentarios.id_temas =" . $tema['id'];
     $comentarios = mysql_query($sql1, $conexion);
@@ -191,21 +218,20 @@ while ($tema = @mysql_fetch_array($temas))
     
     while ($comentario=@mysql_fetch_array($comentarios))
     {
-        echo"<tr>";
+       
 
-          echo"<td colspan = '5'>" . $comentario['nombre'] . " - " . $comentario['fecha_pub']."</td>";
-          echo "<td colspan = '3'>";
-        
+          echo"" . $comentario['nombre'] . " - " . $comentario['fecha_pub']."";
+               
          
               if ($tipo=='0' or $tipo == '0' ) 
           echo" <a href='ceditar.php'> Editar </a>";
           if ($tipo=='0' or $tipo == '0' )
          echo" <a href='index.php?ideliminarcom=".$comentario['id']."'> Eliminar</a>";
-        echo"</tr>";
+        
 
-        echo"<tr>";
+        
           echo"<td colspan = '0'>" . $comentario['comentarios'] . "</td>";
-        echo"</tr>";
+       
     }
 
 }

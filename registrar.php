@@ -36,7 +36,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+  <body style="background: url(legofondo.jpg) no-repeat center center fixed;">
         <div class="container">
       
  <div class="jumbotron"> 

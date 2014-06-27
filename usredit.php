@@ -25,15 +25,29 @@ $usuarios   = @mysql_query($sql, $conexion);
 
 <!doctype html>
 <html>  
-	<body> 
+	  <body style="background: url(legofondo.jpg) no-repeat center center fixed;">		<head>
+		<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<title>Editar Usuario</title>
+	</head>
 	  <center>
 		<center>
-          <h1><font color="black">CAMBIO DE USUARIO</font></h1>
+      
         </center>
-		<TABLE BORDER="0" CELLSPACING="18" WIDTH="150">  
+        <div class="panel panel-default">
+        	<div class="panel-heading">Editar Usuario<span class="glyphicon glyphicon-pencil"></span></div>
+		<table class="table"> 
           <?php
             while($usuario = @mysql_fetch_array($usuarios))
             {
+            
             echo"<tr>";
           	    echo "<td><b><center>".$usuario['nombre']."</center></b></td>";
              	echo "<td><b><center>".$usuario['usuario']."</center></b></td>";
@@ -43,6 +57,7 @@ $usuarios   = @mysql_query($sql, $conexion);
              	echo "<td><a href='usredit.php?borraridusr=".$usuario['id']."'>Borrar</a></td>";
              	echo "<td><b><center>".$usuario['tipo']."</center></b></td>";
 	   		echo"</tr>";
+
 	   	    } 
 
 	   	  echo"<tr>";
@@ -51,6 +66,9 @@ $usuarios   = @mysql_query($sql, $conexion);
 		
 		</center>
 		</table>
+
+</div>
+		</div>
 	  </center>
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

@@ -35,7 +35,7 @@ header("location:index.php");
 <![endif]-->
 <title>Comentario</title>
 	</head>
-<body>
+  <body style="background: url(legofondo.jpg) no-repeat center center fixed;">
   <div class="container">
 
  <div class="alert alert-info">

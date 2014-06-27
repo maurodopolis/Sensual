@@ -16,7 +16,7 @@ Echo "<center>";
           $mensaje= "<div class='alert alert-info'>Reinicie para socializar con las demas lobukis, Mirey</div>";
           break;  
         case '4':
-          $mensaje= "<div class='alert alert-success'>Se ha registrado Mirey, gozalo!</div>";
+          $mensaje= "<div class='alert alert-success'>Se ha registrado Mirey, gozalo!";
           break;  
           
       }
@@ -40,7 +40,7 @@ Echo "<center>";
 <![endif]-->
 <title>MireyBook-Iniciar Sesion.</title>
   </head>
-<body>
+  <body style="background: url(legofondo.jpg) no-repeat center center fixed;">
 <div class="container">
  
  
@@ -61,7 +61,6 @@ Echo "<center>";
           <input name="txtusuario" class="form-control" type="text" placeholder="Usuario" id="txtusuario" value="" >
           </div>
           </div> 
-
       
          <div class="form-group">
          <label for="txtpassword" class="col-sm-4 control-label">Contraseña</label>

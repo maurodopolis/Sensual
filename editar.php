@@ -1,3 +1,4 @@
+
    <?php
    if (isset($_GET['ideditar'])) {
 	$ideditar= $_GET['ideditar'];
@@ -18,30 +19,62 @@ $tema = @mysql_fetch_array ($temas)
 ?>
 
 <!doctype html>
-<html>  
-	<body> 
+<html> 
+<head>
+		<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<title>Editar Tema</title>
+	</head> 
+	  <body style="background: url(legofondo.jpg) no-repeat center center fixed;"> 
+		 <div class="container">
 
 	  <center>
-		<form name= "tituloed" action="editar.php" method="POST" name="admin">
+ <div class="alert alert-info">
+
+		<form class="form-horizontal" role="form" name= "tituloed" action="editar.php" method="POST" name="admin">
+			
 			<input type="hidden" name="idtema" value= "$ideditar">
 			
 		<center>
           <h1>EDITAR TEMA </h1>
         </center>
-		<TABLE  CELLSPACING="18" WIDTH="150">  
+		
           <?php
-
-            echo"<tr>";      
-            echo"<td>";echo"Titulo<input name='titulo' type='text'  id='titulo' value='".$tema['titulo']."'"; echo "</td>";
-            echo"<td>";echo"Contenido<input name='contenido' type='text'  id='contenido value='".$tema['contenido']."'"; echo"</td>";
-            echo"</tr>";
-	   	     
+              echo"<div>"; 
+             echo"<div class='form-group'>";
+          echo"<label for='txtcontenido' class='col-sm-4 control-label'>Titulo</label>";
+          echo"<div class='col-sm-8'>";     
+            echo"<input class='form-control' name='titulo' type='text'  id='titulo' value='".$tema['titulo']."'"; 
+             echo"</div>"; 
+            echo"</div>"; 
+           echo"</div>"; 
+            echo"<div>";
+            echo"<div class='form-group'>";
+          echo"<label for='contenido' class='col-sm-4 control-label'>Contenido</label>";
+          echo"<div class='col-sm-8'>"; 
+            echo"<textarea name='contenido' type='text' class='form-control' rows='3' id='contenido' value='".$tema['contenido']."'"; 
+            echo"</textarea>";
+             echo"</div>"; 
+              echo"</div>"; 
+              echo"</div>"; 
 	   	     
 ?>
 
 		</center>
-		</table>
+	    </form>
 		</form>
 	  </center>
+	</div>
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
