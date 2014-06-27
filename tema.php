@@ -32,20 +32,37 @@ header("location:index.php");
 <title>Nuevo Tema</title>
 	</head>
 <body>
-  <center>
- <table border="1"> 
- 
-	<form action="tema.php" method="POST" name="tema"><br>
+  
+<center>
+	<div class="container">
+ <div class="alert alert-info">
+	<form class="form-horizontal" role="form" action="tema.php" method="POST" name="tema"><br>
    
-		<tr><td><h2><center> Nuevo Tema </center><h2></td></tr> 		 
-		<tr><td><label><center> Titulo: </center><input name="txttema" type="text"  id="txttema" value="" ></td></tr>
-		<tr><td><label><center> Contenido: </center><input name="txtcontenido" type="text"  id="txtcontenido" value="" ></td></tr>
-		 <tr><td><center><input type="submit" value="Publicar"></center></td></tr>
-	 
+		<div><h2><center> Nuevo Tema <Span class="glyphicon glyphicon-file"> </span> </center><h2></div>
+
+         <div class="form-group">
+          <label for="txttema" class="col-sm-4 control-label">Titulo</label>
+          <div class="col-sm-8">
+		<input class="form-control" placeholder="Titulo" name="txttema" type="text"  id="txttema" value="" >
+	</div>
+</div>
+         <div class="form-group">
+          <label for="txtcontenido" class="col-sm-4 control-label">Contenido</label>
+          <div class="col-sm-8">  
+		
+		  <textarea name="txtcontenido" type="text"  id="txtcontenido" value="" class="form-control" rows="3"></textarea>
+           </div>
+	   </div>
+	
+              <center> <button type ="submit"  class = "glyphicon glyphicon-send btn btn-primary"  > 
+  <span  class = "glyphicon glyphicon estrellas" > </span> Publicar </span></button></center>
+		
   </form>
- 
- </table>
+</div>
+</div>
  </center>
+ 
+ 
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
