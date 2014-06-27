@@ -43,34 +43,77 @@
   </head>
   <body style="background: url(legofondo.jpg) no-repeat center center fixed;">
     <div class="container">
+
   <?php
         if (isset($_SESSION["nombre"])) {
             
-             echo"<div  class='row'>";
-             echo "<div  class='col-md-8'>";
+            
+    
+          echo"<P ALIGN=right>";
+          echo"<div  class='row'>";
+             echo "<div  class='col-md-12'>";
+          echo "<nav class='navbar navbar-inverse' role='navigation'>";
+          echo"<form class='navbar-form navbar-left' role='search'>";
+          echo "<div class='form-group'>";
+          echo"<img src='rolex.png' alt='...' class='img-rounded'>";
+          echo "<input type='text' class='form-control' placeholder='Search'>";
+          echo"<button type='submit' class='btn btn-default'>Buscar</button>";
+          echo"</form>";
+          echo"</div>";
+         
+          echo "<div  class='col-md-7'>";
+          echo"<li class='dropdown'>";
+          echo"<a href='#' class='dropdown-toggle 'data-toggle='dropdown'><Span  class = 'glyphicon glyphicon-th-list' > </ span><span class='caret'></span></a>";
+          echo"<ul class='dropdown-menu' role='menu'>";
+
+           echo"<li><a href='#'> <a href='usredit.php'> Editar usuarios </a> </a></li>";
+          echo"<li><a href='#'> <a href='cerrar.php'> Cerrar Sesion </a></a></li>"; 
+        echo"</li>";
+      echo "</ul>";
+       echo"</div>";
+          echo "</nav>";
+          echo"</p>";
+
+           echo"<div  class='row'>";
+             echo "<div  class='col-md-12'>";
           echo "<h1>Bienvenido a sus dominios Mirey " .$_SESSION["nombre"]."</h1>";
           echo "</div>";
-          echo"<P ALIGN=right>";
-           echo" <a href='usredit.php'> Editar usuarios- </a>";
-          echo"<a href='cerrar.php'> Cerrar Sesion </a>"; 
-             
-        }
+           }
+
         else
         {
-          echo "<div  class= 'row' >";
-           echo"<div  class= 'col-md-3' >";  
-          echo "<img src='rolex.png' alt='...' class='img-rounded'>";
-           echo "</div>";
-           echo"<div  class= 'col-md-7' >";  
+         
+          
+           echo"<P ALIGN=right>";
+          echo"<div  class='row'>";
+             echo "<div  class='col-md-12'>";
+          echo "<nav class='navbar navbar-inverse' role='navigation'>";
+          echo"<form class='navbar-form navbar-left' role='search'>";
+          echo "<div class='form-group'>";
+          echo"<img src='rolex.png' alt='...' class='img-rounded'>";
+          echo "<input type='text' class='form-control' placeholder='Search'>";
+          echo"<button type='submit' class='btn btn-default'>Buscar</button>";
+          echo"</form>";
+          echo"</div>";
+         
+          echo "<div  class='col-md-7'>";
+          echo"<li class='dropdown'>";
+          echo"<a href='#' class='dropdown-toggle 'data-toggle='dropdown'><Span  class = 'glyphicon glyphicon-th-list' > </ span><span class='caret'></span></a>";
+          echo"<ul class='dropdown-menu' role='menu'>";
+
+           echo"<li><a href='#'><a href='login.php'> Logueate  </a></a></li>";
+
+          echo"<li><a href='#'><a href='registrar.php'> Registrate </a></a></li>";
+          echo"</li>";
+      echo "</ul>";
+       echo"</div>";
+          echo "</nav>";
+          echo"</p>";
+          echo"<div  class= 'col-md-12' >";  
          echo "<h1><p class='text-primary'>Bienvenido a sus dominios Mirey</p> </h1>";
           echo "</div>"; 
-           echo"<div  class= 'col-md-1' >"; 
-           echo"<a href='login.php'> Logueate  </a><br>";
-
-          echo"<a href='registrar.php'> Registrate </a>";
-          echo"</div>";
-          echo"</div>";
-      echo "</center>";        }
+      echo "</center>";        
+    }
 
 
     
@@ -104,6 +147,8 @@ $sql      = "select temas.*, usuarios.nombre from temas, usuarios where temas.id
 $temas    = @mysql_query($sql, $conexion);
 
 echo"<center>";
+echo "<div class='jumbotron'>";
+  echo "<div class='container'>";
 echo "<table width='80%'>";
 while ($tema = @mysql_fetch_array($temas))
 {
@@ -114,7 +159,7 @@ while ($tema = @mysql_fetch_array($temas))
          
           echo" <a href='tema.php'> Publicar - </a>";
           if ($tipo>'0')
-        echo" <a href='ccomentar.php?idtema=".$tema['id']."&idusr=".$log."'> Comentar- </a>";
+        echo" <a href='ccomentar.php?idtema=".$tema['id']."&idusr=".$log."'> Comentar </a>";
                if ($tipo=='0' or $tipo == '0' )
           echo" <a href='editar.php'> Editar - </a>";
           if ($tipo=='0')
@@ -164,8 +209,18 @@ while ($tema = @mysql_fetch_array($temas))
     }
 
 }
+echo"<ul  class= 'pagination' >";
+  echo"<li  class= disabled' ><span> « </span></li>"; 
+  echo"<li  class= 'active' ><span> 1 <span  class= 'sr-only' > (current) </span></span></li>";
+ 
+ echo"<li class='off'><a href='#''>2 <span class='sr-only'>(current)</span></a></li>"; 
+  echo"<li class='disabled'><a href='#'>»;</a></li>";
+  echo" </ul>";
 echo"</center>";
+
 echo "</table>";
+echo"</div>";
+
 
 @mysql_close($conexion);
 
