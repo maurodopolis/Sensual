@@ -31,7 +31,11 @@ header("location:index.php");
 
 <title>Nuevo Tema</title>
 	</head>
+<<<<<<< HEAD
   <body style="background: url(legofondo.jpg) no-repeat center center fixed;">
+=======
+<body>
+>>>>>>> 8cb2b690359bb8cc99ca4fbd524cbf189f1daa54
   
 <center>
 	<div class="container">
